@@ -29,12 +29,3 @@ variable "recovery_vault_name" {
 variable "storage_account_name" {
   type =  string
 }
-
-locals {
-  tags = {
-    Assignment     = "CCGC 5502 Automation Assignment"
-    Name           = "N01595396 Shivam"
-    ExpirationDate = "2024-12-31"
-    Environment    = "Learning"
-  }
-}

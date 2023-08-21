@@ -2,6 +2,7 @@ module "rgroup-5396" {
   source              = "./modules/rgroup-5396"
   resource_group_name = "5396-RG"
   location            = "East US"
+  tags                = local.tags
 }
 
 module "network-5396" {
@@ -27,6 +28,7 @@ module "common-5396" {
   resource_group_name  = module.rgroup-5396.Shivam_RG.name
   location             = module.rgroup-5396.Shivam_RG.location
   depends_on           = [module.rgroup-5396, ]
+  tags                 = local.tags
 }
 
 module "datadisk-5396" {
@@ -40,6 +42,7 @@ module "datadisk-5396" {
   linux_vm_ids         = module.vmlinux-5396.Linux_VM_Ids
   windows_vm_name      = module.vmwindows-5396.Windows_VM_Hostnames
   windows_vm_ids       = module.vmwindows-5396.Windows_VM_Ids
+  tags                 = local.tags
 }
 
 module "vmlinux-5396" {
@@ -63,10 +66,12 @@ module "vmlinux-5396" {
   location                      = module.rgroup-5396.Shivam_RG.location
   subnet_id                     = module.network-5396.Subnet.id
   boot_diagnostics              = module.common-5396.Storage_Account.primary_blob_endpoint
+  tags                          = local.tags
 
   depends_on = [module.rgroup-5396,
     module.common-5396,
   module.network-5396]
+
 }
 
 
@@ -89,6 +94,7 @@ module "vmwindows-5396" {
   windows_version               = "latest"
   windows_avs                   = "my_windows_avs"
   boot_diagnostics              = module.common-5396.Storage_Account.primary_blob_endpoint
+  tags                          = local.tags
 
   depends_on = [module.rgroup-5396,
     module.common-5396,
@@ -104,6 +110,7 @@ module "loadbalancer-5396" {
   vnet_id             = module.network-5396.Virtual_Network.id
   nic_linux           = module.vmlinux-5396.Linux_NIC
   linux_name          = module.vmlinux-5396.Linux_VM_Hostnames
+  tags                = local.tags
 
   depends_on = [module.rgroup-5396,
   module.vmlinux-5396]
@@ -121,6 +128,7 @@ module "database-5396" {
   database_storage_mb     = 5120
   database_admin_username = "psqladmin"
   database_admin_password = "P@$$w0rd1234!"
+  tags                    = local.tags
 
   depends_on = [module.rgroup-5396, ]
 }

@@ -6,7 +6,6 @@ resource "azurerm_managed_disk" "linux_data_disk" {
   storage_account_type = var.storage_account_type
   create_option        = var.disk_create_option
   disk_size_gb         = var.disk_size_gb
-  tags                 = local.tags
 }
 
 resource "azurerm_managed_disk" "windows_data_disk" {
@@ -17,7 +16,6 @@ resource "azurerm_managed_disk" "windows_data_disk" {
   storage_account_type = var.storage_account_type
   create_option        = var.disk_create_option
   disk_size_gb         = var.disk_size_gb
-  tags                 = local.tags
 }
 
 # Linux VM Data Disk Attachment

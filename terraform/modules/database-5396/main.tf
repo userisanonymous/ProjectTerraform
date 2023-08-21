@@ -9,7 +9,6 @@ resource "azurerm_postgresql_server" "database_server" {
   administrator_login          = var.database_admin_username
   administrator_login_password = var.database_admin_password
   ssl_enforcement_enabled      = true
-  tags                         = local.tags
 }
 
 resource "azurerm_postgresql_database" "database" {

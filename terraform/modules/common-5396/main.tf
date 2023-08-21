@@ -6,7 +6,6 @@ resource "azurerm_log_analytics_workspace" "log_analytics" {
   retention_in_days   = var.retention_in_days
 
   depends_on = [var.resource_group_name, ]
-  tags = local.tags
 }
 
 resource "azurerm_recovery_services_vault" "recovery_vault" {
@@ -16,7 +15,6 @@ resource "azurerm_recovery_services_vault" "recovery_vault" {
   sku                 = var.recovery_vault_sku
 
   depends_on = [var.resource_group_name,]
-  tags = local.tags
 }
 
 resource "azurerm_storage_account" "storage_account" {
@@ -25,5 +23,4 @@ resource "azurerm_storage_account" "storage_account" {
   location                 = var.location
   account_tier              = "Standard"
   account_replication_type = "LRS"
-  tags = local.tags
 }

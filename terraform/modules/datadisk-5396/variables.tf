@@ -43,12 +43,3 @@ variable "windows_vm_name" {
   description = "List of Windows VM resource name"
   type        =  list(string)
 }
-
-locals {
-  tags = {
-    Assignment     = "CCGC 5502 Automation Assignment"
-    Name           = "N01595396 Shivam"
-    ExpirationDate = "2024-12-31"
-    Environment    = "Learning"
-  }
-}

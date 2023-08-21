@@ -4,7 +4,6 @@ resource "azurerm_availability_set" "windows_avs" {
   resource_group_name          = var.resource_group_name
   platform_fault_domain_count  = 2
   platform_update_domain_count = 5
-  tags                         = local.tags
 }
 
 resource "azurerm_network_interface" "windows_nic" {
@@ -19,8 +18,6 @@ resource "azurerm_network_interface" "windows_nic" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = element(azurerm_public_ip.windows_pip[*].id, count.index + 1)
   }
-
-  tags = local.tags
 }
 
 resource "azurerm_public_ip" "windows_pip" {
@@ -30,8 +27,6 @@ resource "azurerm_public_ip" "windows_pip" {
   resource_group_name = var.resource_group_name
   domain_name_label   = "${var.windows_name}${format("%1d", count.index + 1)}"
   allocation_method   = "Dynamic"
-
-  tags = local.tags
 }
 
 resource "azurerm_windows_virtual_machine" "vm_windows" {
@@ -93,7 +88,4 @@ resource "azurerm_virtual_machine_extension" "windows_antimalware" {
         }
     }
 SETTINGS
-
-
-  tags = local.tags
 }

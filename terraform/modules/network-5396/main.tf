@@ -3,7 +3,6 @@ resource "azurerm_virtual_network" "shivam_vnet" {
   address_space       = var.virtual_network_address_space
   location            = var.location
   resource_group_name = var.resource_group_name
-  tags                = local.tags
 }
 
 resource "azurerm_subnet" "shivam_subnet" {
@@ -65,8 +64,6 @@ resource "azurerm_network_security_group" "shivam_nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-
-  tags = local.tags
 }
 
 resource "azurerm_subnet_network_security_group_association" "shivam_subnet_nsg" {

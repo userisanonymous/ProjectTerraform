@@ -7,7 +7,6 @@ resource "azurerm_public_ip" "linux_pip" {
   allocation_method   = "Static"
   sku                 = "Standard"
   zones               = toset(["1", "2", "3"])
-  tags = local.tags
 }
 
 resource "azurerm_network_interface" "linux_nic" {
@@ -22,8 +21,6 @@ resource "azurerm_network_interface" "linux_nic" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.linux_pip[each.key].id
   }
-
-  tags = local.tags
 }
 
 
@@ -60,8 +57,6 @@ resource "azurerm_linux_virtual_machine" "vmlinux" {
     sku       = var.linux_sku
     version   = var.linux_version
   }
-
-  tags = local.tags
 }
 
 resource "azurerm_virtual_machine_extension" "network_watcher" {
@@ -73,7 +68,6 @@ resource "azurerm_virtual_machine_extension" "network_watcher" {
   type                 = "NetworkWatcherAgentLinux"
   type_handler_version = "1.4"
   depends_on           = [azurerm_linux_virtual_machine.vmlinux]
-  tags = local.tags
 }
 
 resource "azurerm_virtual_machine_extension" "azure_monitor" {
@@ -84,5 +78,4 @@ resource "azurerm_virtual_machine_extension" "azure_monitor" {
   type                 = "AzureMonitorLinuxAgent"
   type_handler_version = "1.9"
   depends_on           = [azurerm_linux_virtual_machine.vmlinux]
-  tags = local.tags
 }
