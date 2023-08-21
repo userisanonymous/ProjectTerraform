@@ -7,7 +7,7 @@
 - name: Create files with FQDN
   local_action: ansible.builtin.shell echo "{{ ansible_fqdn }}\n" >> /mnt/c/Users/MAC/automation/ansible/roles/webserver-n01595396/files/vm.html
 
-- name: Copy locfile to managed nodes and set ownership and permissions
+- name: Copy VM.html as index.html to managed nodes and set ownership and permissions
   copy:
         src: /mnt/c/Users/MAC/automation/ansible/roles/webserver-n01595396/files/vm.html
         dest: "{{ web_files_directory }}/index.html"
