@@ -19,15 +19,15 @@ database-5396: Deploys a Postgres database server.
 Terraform 1.4.6+a and Azure CLI
 
 ## Usage
-Update the variable values in the module files according to your needs and execute the following commands (make sure you're logged into Azure account via Azure CLI)
+Update the variable values in the module files according to your needs and execute the following commands (make sure you're logged into Azure account via Azure CLI)  
 
-terraform init
-terraform validate
-terraform plan
-terraform apply --auto-approve
+terraform init  
+terraform validate  
+terraform plan  
+terraform apply --auto-approve  
 
-## To destroy the created infrastructure:
-terraform destroy --auto-approve
+## To destroy the created infrastructure:  
+terraform destroy --auto-approve  
 
 ## Disclaimer
 This is a sample configuration and should not be used as-is for production workloads
