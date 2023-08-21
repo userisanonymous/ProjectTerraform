@@ -16,8 +16,7 @@ loadbalancer-5396: Sets up a load balancer for the Linux VMs.
 database-5396: Deploys a Postgres database server.  
 
 ## Requirements
-Terraform 1.4.6+
-Azure CLI
+Terraform 1.4.6+a and Azure CLI
 
 ## Usage
 Update the variable values in the module files according to your needs and execute the following commands (make sure you're logged into Azure account via Azure CLI)
