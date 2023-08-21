@@ -4,7 +4,6 @@ resource "azurerm_public_ip" "lb_pip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
-  tags                = local.tags
 }
 
 resource "azurerm_lb" "load_balancer" {
@@ -16,8 +15,6 @@ resource "azurerm_lb" "load_balancer" {
     name                 = "${var.resource_group_name}-frontend-ip"
     public_ip_address_id = azurerm_public_ip.lb_pip.id
   }
-
-  tags = local.tags
 }
 
 resource "azurerm_lb_backend_address_pool" "backend_address_pool" {
