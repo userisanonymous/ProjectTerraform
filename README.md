@@ -22,7 +22,7 @@ profile: appends a line to /etc/profile
 user: creates 3 users and adds them to group & geneartes and distributes the SSH keys for these users.   
 webserver: Installs Apache web server on deployed linux VMs, creats index.html file on /var/www/html directory for each VM and writes VM's FQDN to that file. Handler will restart the apache server.
 
-playbook: Ansible playbook that wil run all the above defined tasks against the deployed Linux VMs.  
+playbook: Ansible playbook that will run all the above defined tasks against the deployed Linux VMs.  
 
 ## Requirements
 Terraform 1.4.6+ and Azure CLI
