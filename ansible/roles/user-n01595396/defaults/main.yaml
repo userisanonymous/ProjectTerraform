@@ -1,0 +1,6 @@
+---
+group_name: cloudadmins
+user_accounts:
+  - name: user100
+  - name: user200
+  - name: user300

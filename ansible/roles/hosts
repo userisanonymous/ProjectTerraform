@@ -1,0 +1,8 @@
+[linux]
+n01595396-c-vm1.eastus.cloudapp.azure.com
+n01595396-c-vm2.eastus.cloudapp.azure.com
+n01595396-c-vm3.eastus.cloudapp.azure.com
+
+[linux:vars]
+ansible_user=n01595396
+

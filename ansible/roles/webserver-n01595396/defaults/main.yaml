@@ -1,0 +1,5 @@
+---
+web_files_directory: /var/www/html
+web_server_service: httpd
+web_server_service_state: started
+web_server_service_enabled: yes

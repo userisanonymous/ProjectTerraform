@@ -1,0 +1,10 @@
+---
+- name: Configure Load-Balanced Website
+  hosts: linux
+  become: yes
+
+  roles:
+    - datadisk-n01595396
+    - profile-n01595396
+    - user-n01595396
+    - webserver-n01595396

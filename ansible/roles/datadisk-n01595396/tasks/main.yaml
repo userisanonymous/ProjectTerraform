@@ -1,0 +1,44 @@
+---
+- name: Creating new xfs partitions
+  community.general.parted:
+    device: "{{ disk_device }}"
+    number: 1
+    flags: [ lvm ]
+    state: present
+    part_end: 4GiB
+
+- name: Creating 2nd ext4 partitino
+  community.general.parted:
+    device: "{{ disk_device }}"
+    number: 2
+    flags: [ lvm ]
+    state: present
+    part_start: 4GiB
+    part_end: 9GiB
+
+- name:  formating 1st partitions
+  filesystem:
+    fstype: xfs
+    dev: /dev/sdc1
+
+- name: formating 2nd partitions
+  filesystem:
+    fstype: ext4
+    dev: /dev/sdc2
+
+- name: mounting 1st
+  mount:
+    fstype: xfs
+    src: /dev/sdc1
+    path: /part1
+    state: mounted
+
+- name: mounting 2nd
+  mount:
+    fstype: ext4
+    src: /dev/sdc2
+    path: /part2
+    state: mounted
+
+
+  

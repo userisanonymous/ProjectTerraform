@@ -1,0 +1,7 @@
+---
+- name: Append lines to /etc/profile
+  blockinfile:
+    path: /etc/profile
+    block: |
+      # Test block added by Ansible for n10595396
+      export TMOUT=1500

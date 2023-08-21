@@ -1,0 +1,10 @@
+# vars/main.yml
+---
+disk_device: "/dev/sdc"  # Specify the correct disk device identifier
+part1_size: "4G"
+part1_fs_type: "xfs"
+part1_mount_path: "/part1"
+
+part2_size: "5G"
+part2_fs_type: "ext4"
+part2_mount_path: "/part2"
